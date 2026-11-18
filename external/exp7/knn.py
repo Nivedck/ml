@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np 
 import math
 import random
 
@@ -52,11 +51,22 @@ def predict(point,k):
 
 
 
-
-new_point = [5.5,2.4,3.7,1.0]
-
 k = 5
-result = predict(new_point, k)
+actual=[]
+predicted=[]
+correct =0
 
-print("New Point:", new_point)
-print("Predicted Species:", result)
+for x,label in X_test:
+    pred = predict(x,k)
+    actual.append(label)
+    predicted.append(pred)
+    if(pred==label):
+        correct+=1
+
+
+total_test = len(X_test)
+print("\n--- Evaluation Results ---")
+print("Correct:", correct)
+print("Incorrect:", total_test - correct)
+print(f"Accuracy: {(correct / total_test) * 100:.2f}%")
+
