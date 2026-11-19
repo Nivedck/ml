@@ -8,8 +8,8 @@ data = pd.read_csv("iris.csv")
 print("First few rows of the dataset:")
 print(data.head())
 
-X = data[["sepal_length","sepal_width","petal_lenght","petal_width"]].values.tolist()
-y = data["Species"].tolist()
+X = data[["sepal_length","sepal_width","petal_length","petal_width"]].values.tolist()
+y = data["species"].tolist()
 dataset = list(zip(X, y))
 
 

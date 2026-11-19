@@ -1,6 +1,6 @@
 
 import matplotlib.pyplot as plt
-from sklearn.datasets import load_iris
+import pandas as pd 
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.metrics import (
@@ -9,9 +9,9 @@ from sklearn.metrics import (
 )
 
 # 1. Load dataset
-iris = load_iris()
-X = iris.data
-y = iris.target
+df = pd.read_csv("iris.csv")
+X = df[["sepal_length","sepal_width","petal_length","petal_width"]]
+y = df["species"]
 
 # 2. Split dataset
 X_train, X_test, y_train, y_test = train_test_split(
@@ -47,8 +47,6 @@ def evaluate_tree(criterion, name):
     plt.figure(figsize=(12, 8))
     plot_tree(
         model,
-        feature_names=iris.feature_names,
-        class_names=iris.target_names,
         filled=True
     )
     plt.title(name)
